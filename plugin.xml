@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin id="cordova-remove-input-assistant" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:ios="http://apache.org/cordova/ns/plugins/1.0/ios">
+    <name>Remove Input Assistant</name>
+    <description>Removes UISystemInputAssistantViewController strip (iOS app on Mac / Catalyst) for WKWebView in
+        Cordova
+    </description>
+    <license>MIT</license>
+    <keywords>cordova, wkwebview, inputAssistant, mac, catalyst</keywords>
+    <engines>
+        <engine name="cordova" version=">=10.0.0"/>
+        <engine name="cordova-ios" version=">=6.0.0"/>
+    </engines>
+
+    <platform name="ios">
+        <source-file src="src/ios/cordova-remove-input-assistant.m"/>
+    </platform>
+</plugin>
