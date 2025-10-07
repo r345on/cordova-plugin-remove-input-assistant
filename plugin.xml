@@ -14,5 +14,9 @@
 
     <platform name="ios">
         <source-file src="src/ios/RemoveInputAssistantPlugin.m"/>
+        <feature name="RemoveInputAssistantPlugin">
+            <param name="ios-package" value="RemoveInputAssistantPlugin"/>
+            <param name="onload" value="true"/>
+        </feature>
     </platform>
 </plugin>
