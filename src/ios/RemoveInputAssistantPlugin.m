@@ -1,7 +1,7 @@
 #import <Cordova/CDVPlugin.h>
 #import <WebKit/WebKit.h>
 
-@interface ATKInputAssistantFix : CDVPlugin <WKScriptMessageHandler>
+@interface RemoveInputAssistantPlugin : CDVPlugin <WKScriptMessageHandler>
 @property (nonatomic, strong) id obsBecomeActive;
 @property (nonatomic, strong) id obsWindowKey;
 @property (nonatomic, assign) BOOL installed;
@@ -9,7 +9,7 @@
 
 #pragma mark - Helpers
 
-static inline WKWebView *ATKGetWK(ATKInputAssistantFix *plugin) {
+static inline WKWebView *ATKGetWK(RemoveInputAssistantPlugin *plugin) {
     id webView = nil;
 
     // cordova-ios >=6 sets engineWebView to a WKWebView
@@ -45,7 +45,7 @@ static void ATKHideAssistant(WKWebView *webView) {
 
 #pragma mark - Plugin
 
-@implementation ATKInputAssistantFix
+@implementation RemoveInputAssistantPlugin
 
 - (void)pluginInitialize {
     [super pluginInitialize];
