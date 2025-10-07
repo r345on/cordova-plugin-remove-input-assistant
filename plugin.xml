@@ -13,6 +13,6 @@
     </engines>
 
     <platform name="ios">
-        <source-file src="src/ios/cordova-remove-input-assistant.m"/>
+        <source-file src="src/ios/RemoveInputAssistantPlugin.m"/>
     </platform>
 </plugin>
