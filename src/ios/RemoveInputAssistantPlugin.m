@@ -1,5 +1,6 @@
 #import <Cordova/CDVPlugin.h>
 #import <WebKit/WebKit.h>
+#import <objc/message.h>
 
 @interface RemoveInputAssistantPlugin : CDVPlugin <WKScriptMessageHandler>
 @property (nonatomic, strong) id obsBecomeActive;
@@ -50,14 +51,10 @@ static void ATKHideAssistant(WKWebView *webView) {
 - (void)pluginInitialize {
     [super pluginInitialize];
 
-    // Only on iOS 14+ "Designed for iPad" on macOS or Catalyst
-    BOOL shouldInstall = NO;
-    if (@available(iOS 14.0, *)) {
-        if (NSProcessInfo.processInfo.isiOSAppOnMac || NSProcessInfo.processInfo.isMacCatalystApp) {
-            shouldInstall = YES;
-        }
+
+    if(!IsiOSAppOnMac()) {
+        return;
     }
-    if (!shouldInstall) return;
 
     // Defer to next runloop so WKContentView exists
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -140,6 +137,20 @@ static void ATKHideAssistant(WKWebView *webView) {
     self.installed = NO;
 
     [super dispose];
+}
+
+
+NS_INLINE BOOL IsiOSAppOnMac(void) {
+#if TARGET_OS_MACCATALYST
+    return YES;
+#else
+    SEL sel = NSSelectorFromString(@"isiOSAppOnMac");
+    if ([[NSProcessInfo processInfo] respondsToSelector:sel]) {
+        BOOL (*msgSend)(id, SEL) = (BOOL (*)(id, SEL))objc_msgSend;
+        return msgSend([NSProcessInfo processInfo], sel);
+    }
+    return NO;
+#endif
 }
 
 @end
