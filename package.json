@@ -1,0 +1,12 @@
+{
+  "name": "cordova-plugin-remove-input-assistant",
+  "version": "1.0.0",
+  "description": "Remove input assistant for iPad application run on macOS",
+  "cordova": {
+    "id": "cordova-plugin-remove-input-assistant",
+    "platforms": ["ios"]
+  },
+  "repository": "git@github.com:r345on/cordova-remove-input-assistant.git",
+  "author": "Illia Korobov <illia.korobov@tu-ilmenau.de>",
+  "license": "MIT"
+}
